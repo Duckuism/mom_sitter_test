@@ -11,8 +11,6 @@ const cx = classNames.bind(styles);
 const isSearched = searchTerm => item =>
   item.FULL_ADDR.includes(searchTerm);
 
-let isNotDisplay = true;
-
 class App extends Component {
   constructor(props){
     super(props);
@@ -29,14 +27,6 @@ class App extends Component {
   onSearchChange(event){
     this.setState({searchTerm : event.target.value});
   }
-
-  onFillSearchTerm = (e, data) => {   
-    console.log(e);
-    console.log(data); 
-    console.log(e.FULL_ADDR);
-    document.getElementsByClassName('inputBox').value = e.FULL_ADDR;
-  }
-
 
   render() {
 
