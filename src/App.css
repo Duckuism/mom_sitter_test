@@ -1,0 +1,84 @@
+.App {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.notDisplay{
+  display: none;
+}
+
+.inputBox{
+  display: flex;
+  justify-content: start;
+  width:100%;
+  height:30px;
+  padding:5px;
+}
+
+.flex{
+  display: flex;
+  justify-content: center;
+}
+
+.flex-form{
+  display: flex;
+  justify-content: start;
+  margin : 3px;
+}
+
+.placeBox{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width:100%;
+  border: 1px solid white;
+  margin: 0 2px;  
+  font-size: 12px;
+
+}
+
+.placeBox:hover{
+  background-color: #E6E6E6;
+}
+
+  
+.placeIcon{
+  width:25px;
+  height:25px;
+}
+
+.main_name{
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.container{
+  width:60%;
+  margin: 0 auto;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
