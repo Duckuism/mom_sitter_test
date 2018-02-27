@@ -81,15 +81,11 @@ class App extends Component {
   }
 
   onFocus(event){
-    console.log("focus");
-    console.log(document.querySelector("div"));
     document.querySelector(".section_container").style.display="inline";
     
   }
 
   onBlur(event){
-    console.log("blur");
-    console.log(document.querySelector("div"));
     document.querySelector(".section_container").style.display="none";
     
   }
