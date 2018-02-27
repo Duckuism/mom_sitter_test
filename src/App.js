@@ -26,8 +26,9 @@ class App extends Component {
     this.onSearchChange = this.onSearchChange.bind(this); 
     this.onClickChange = this.onClickChange.bind(this);
     this.onKeyChange = this.onKeyChange.bind(this);
+    this.onFocus = this.onFocus.bind(this);
+    this.onBlur = this.onBlur.bind(this);
     
-
   }
 
   onSearchChange(event){
@@ -44,25 +45,54 @@ class App extends Component {
 
     if (event.keyCode == '38') {
         // up arrow
-        event.target.previousSibling.focus();
+        if(event.target.previousSibling == document.querySelector("form")){
+          document.querySelector("input").focus();
+        }else{
+          event.target.previousSibling.focus();
+        }
+
     }
     else if (event.keyCode == '40') {
         // down arrow
-        event.target.nextSibling.focus();
-
+        if(event.target.nextSibling == null){
+          document.querySelector(".section").focus();
+        }else{
+          event.target.nextSibling.focus();  
+        }
+        
     }else if (event.keyCode == '13'){
         document.getElementById("inputBox").value = item.FULL_ADDR;
     }
   
   }
-  componentDidUpdate(){
-    var section = document.getElementsByClassName("section");
-    while(section.firstChild){
-      console.log(section.firstChild);
-      section.firstChild.focus();
-    } 
+
+
+  onEnterInsert(event){
+    event = event || window.event;
+    if(event.keyCode == '13'){
+      var section = document.querySelector(".section");
+      var content = document.querySelector(".FULL_ADDR").textContent;
+      if(section != null){
+        section.focus();
+        document.getElementById("inputBox").value = content;
+      }      
+    }
+
   }
-  
+
+  onFocus(event){
+    console.log("focus");
+    console.log(document.querySelector("div"));
+    document.querySelector(".section_container").style.display="inline";
+    
+  }
+
+  onBlur(event){
+    console.log("blur");
+    console.log(document.querySelector("div"));
+    document.querySelector(".section_container").style.display="none";
+    
+  }
 
   render() {
 
@@ -75,10 +105,13 @@ class App extends Component {
           onChange={this.onSearchChange}
           placeholder="Search your address"
           className={cx('inputBox')}
-          id="inputBox"          
+          id="inputBox"
+          onKeyDown={this.onEnterInsert}
+          onFocus={this.onFocus}
+          onBlur={this.onBlur}          
           />
         </form>          
-                 
+        <div className="section_container">
           {this.state.list.filter(isSearched(this.state.searchTerm)).map(item => {                          
               if(this.state.searchTerm !== ''){
               
@@ -102,7 +135,7 @@ class App extends Component {
               }
           }
           )}         
-        
+        </div>
         </div>
       </div>
     );

@@ -34,6 +34,7 @@
   width:100%;
   height:30px;
   padding:5px;
+  font-size:14px;
 }
 
 .flex{
@@ -59,7 +60,7 @@
 }
 
 .placeBox:hover{
-  background-color: #B3FDFF;
+  background-color: #EEF0F7;
 }
 
   
