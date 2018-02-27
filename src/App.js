@@ -38,7 +38,7 @@ class App extends Component {
     document.getElementById("inputBox").value = item.FULL_ADDR;
   }
 
-  onKeyChange(event){
+  onKeyChange(event, item){
 
     event = event || window.event;
 
@@ -50,8 +50,17 @@ class App extends Component {
         // down arrow
         event.target.nextSibling.focus();
 
+    }else if (event.keyCode == '13'){
+        document.getElementById("inputBox").value = item.FULL_ADDR;
     }
   
+  }
+  componentDidUpdate(){
+    var section = document.getElementsByClassName("section");
+    while(section.firstChild){
+      console.log(section.firstChild);
+      section.firstChild.focus();
+    } 
   }
   
 
@@ -66,8 +75,7 @@ class App extends Component {
           onChange={this.onSearchChange}
           placeholder="Search your address"
           className={cx('inputBox')}
-          id="inputBox"
-          
+          id="inputBox"          
           />
         </form>          
                  
@@ -79,8 +87,8 @@ class App extends Component {
                 <div key={item.ID} 
                      onClick={(event)=>this.onClickChange(event, item)}                     
                      tabIndex={this.state.tabIndex}                
-                     onKeyDown={this.onKeyChange}   
-                     className="section"                   
+                     onKeyDown={(event)=>this.onKeyChange(event, item)}   
+                     className="section"                  
                      >
                     <div className={cx('placeBox')} >
                       <img src={placeIcon} className={cx('placeIcon')} alt="placeIcon" />
