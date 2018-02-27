@@ -21,7 +21,7 @@ class App extends Component {
     };
 
     this.onSearchChange = this.onSearchChange.bind(this); 
-    this.onFillSearchTerm = this.onFillSearchTerm.bind(this);
+    
   }
 
   onSearchChange(event){
@@ -47,9 +47,7 @@ class App extends Component {
 
               return(                              
               
-                <div key={item.ID} 
-                     className={cx('flex',{notDisplay: isNotDisplay})} 
-                     onClick={this.onFillSearchTerm.bind(null, item)}>
+                <div key={item.ID}>
                     <div className={cx('placeBox')} >
                       <img src={placeIcon} className={cx('placeIcon')} alt="placeIcon" />
                       <span className={cx('main_name')}>{item.MAIN_NAME}</span> ,&nbsp;
